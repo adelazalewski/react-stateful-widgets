@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactDom from "react-dom";
+
 
 //import "src\styles.less";
 /*
@@ -57,24 +57,29 @@ export default function Counter() {
 
   const increment = () => {
     /* STEP 4 */
+    let countOnClick = count + 1;
+    return setCount(countOnClick);
   };
   const decrement = () => {
     /* STEP 5 */
+    let countMinus = count - 1;
+    return setCount(countMinus);
   };
   const reset = () => {
     /* STEP 6 */
+    return setCount(0);
   };
-
+  
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: `{${count} === 'even' ? ${color} === 'royalblue' : ${color} === 'crimson'}` , /* STEP 2 */
+    color: count % 2 === 0 ? 'royalblue' : 'crimson' , /* STEP 2 */
   };
 
   return (
     <div className='widget-counter container'>
       <h2>Counter</h2>
-      <div style={style}>Number {count} is {count === count + 1 ? "odd" : 'sdgvsd'}</div> 
+      <div style={style}>Number {count} is {count % 2 === 0 ? 'even' : 'odd'}</div> 
       {/* /* STEP 3 */ }
       <div>
         <button onClick={increment}>Increment</button>
@@ -84,3 +89,6 @@ export default function Counter() {
     </div>
   );
 }
+
+// const rootElement = document.getElementById('root');
+// ReactDom.render(<Counter />, rootElement);
